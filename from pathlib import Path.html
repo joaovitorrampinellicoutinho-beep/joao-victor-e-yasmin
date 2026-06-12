@@ -1,0 +1,330 @@
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Victor & Yasmin ❤️</title>
+<style>
+body{margin:0;background:#121212;color:#fff;font-family:Arial,sans-serif}
+#intro{position:fixed;inset:0;background:#000;display:flex;justify-content:center;align-items:center;z-index:99}
+.heart{width:120px;height:120px;background:#ff2d55;transform:rotate(-45deg);cursor:pointer;position:relative}
+.heart:before,.heart:after{content:"";position:absolute;width:120px;height:120px;background:#ff2d55;border-radius:50%}
+.heart:before{top:-60px}.heart:after{left:60px}
+#site{display:none}
+.hero{text-align:center;padding:30px;background:linear-gradient(#1DB954,#121212)}
+.album{width:260px;height:260px;margin:20px auto;border-radius:20px;overflow:hidden}
+.album img{width:100%;height:100%;object-fit:cover}
+.spin{animation:spin 8s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.card{background:#181818;margin:15px;padding:20px;border-radius:16px}
+.carousel{display:flex;overflow-x:auto;gap:10px}
+.carousel img{height:260px;border-radius:12px}
+</style>
+</head>
+<body>
+<div id="intro"><div class="heart" onclick="openSite()"></div></div>
+
+<audio id="music" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div id="site">
+<div class="hero">
+<h1>João Victor ❤️ Yasmin</h1>
+<div class="album"><img id="cover" src="capa.jpg"></div>
+<div class="card">
+
+    <h2>❤️ Nossa História ❤️</h2>
+
+    <p id="texto" style="
+        line-height:1.8;
+        font-size:18px;
+        color:white;
+        min-height:250px;
+    "></p>
+
+</div>
+
+<script>
+
+const mensagem = `
+Yasmin ❤️
+
+Desde o momento em que você entrou na minha vida,
+tudo ficou mais bonito.
+
+Você é meu sorriso favorito,
+minha pessoa favorita
+e a melhor parte dos meus dias.
+
+Obrigado por cada momento,
+cada conversa,
+cada abraço
+e por fazer parte da minha história.
+
+Te amo infinitamente. ❤️
+
+João Victor
+`;
+
+let i = 0;
+
+function escreverTexto(){
+
+    if(i < mensagem.length){
+
+        document.getElementById("texto").innerHTML += mensagem.charAt(i);
+
+        i++;
+
+        setTimeout(escreverTexto, 50);
+
+    }
+
+}
+
+escreverTexto();
+
+</script>
+<p>Tema Spotify - Dia dos Namorados</p>
+</div>
+
+<div class="card">
+<h2>⏳ Contador</h2>
+<div id="counter"></div>
+</div>
+
+<div class="card">
+<h2>🎵 Te Esperando</h2>
+<button onclick="toggleMusic()">Play / Pause</button>
+</div>
+
+<div class="card">
+<h2>📸 Nossos Momentos</h2>
+<div class="carousel">
+<img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg">
+<img src="foto4.jpg"><img src="foto5.jpg"><img src="foto6.jpg">
+<img src="foto7.jpg">
+</div>
+</div>
+
+<div class="card"><h2>📖 Capa</h2><img src="capa.jpg" style="width:100%"></div>
+<div class="card"><h2>📖 Contracapa</h2><img src="contracapa.jpg" style="width:100%"></div>
+<div class="card">
+
+    <h2 style="text-align:center;">❤️ Carta Final ❤️</h2>
+
+    <div class="heart-letter">
+
+        <div class="heart-text">
+
+            <h3>Yasmin ❤️</h3>
+
+            <p>
+            Desde o momento em que você entrou na minha vida,
+            tudo ficou mais bonito.
+            </p>
+
+            <p>
+            Você se tornou meu sorriso favorito,
+            meu lugar seguro
+            e a pessoa que faz meus dias valerem a pena.
+            </p>
+
+            <p>
+            Obrigado por cada momento,
+            cada conversa,
+            cada abraço
+            e cada lembrança que construímos juntos.
+            </p>
+
+            <p>
+            Não importa quanto tempo passe,
+            meu coração sempre escolherá você.
+            </p>
+
+            <p>
+            Eu Te Amo ❤️
+            </p>
+
+            <strong>
+            João Victor
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.heart-letter{
+    position:relative;
+    width:320px;
+    height:290px;
+    margin:30px auto;
+    background:#ff4d6d;
+    transform:rotate(-45deg);
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(255,77,109,.5);
+}
+
+.heart-letter::before,
+.heart-letter::after{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    background:#ff4d6d;
+    border-radius:50%;
+}
+
+.heart-letter::before{
+    top:-160px;
+    left:0;
+}
+
+.heart-letter::after{
+    left:160px;
+    top:0;
+}
+
+.heart-text{
+    position:absolute;
+    width:220px;
+    top:-80px;
+    left:50%;
+    transform:translateX(-50%) rotate(45deg);
+    z-index:2;
+    text-align:center;
+    color:white;
+    line-height:1.5;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+
+    .heart-letter{
+        width:260px;
+        height:240px;
+    }
+
+    .heart-letter::before,
+    .heart-letter::after{
+        width:260px;
+        height:260px;
+    }
+
+    .heart-letter::before{
+        top:-130px;
+    }
+
+    .heart-letter::after{
+        left:130px;
+    }
+
+    .heart-text{
+        width:180px;
+        font-size:12px;
+    }
+}
+
+</style>
+<div class="card">
+
+    <h2>❤️ Uma Mensagem Para Você ❤️</h2>
+
+    <p style="
+        line-height:2;
+        font-size:18px;
+        text-align:center;
+        color:white;
+    ">
+
+        Yasmin,
+
+        <br><br>
+
+        Você é a pessoa que transformou momentos simples
+        em lembranças inesquecíveis.
+
+        <br><br>
+
+        Cada conversa,
+        cada sorriso
+        e cada instante ao seu lado
+        se tornaram partes especiais da minha vida.
+
+        <br><br>
+
+        Quando penso em felicidade,
+        penso em você.
+
+        <br><br>
+
+        Quando penso em amor,
+        penso em nós.
+
+        <br><br>
+
+        Obrigado por existir
+        e por fazer meus dias mais bonitos.
+
+        <br><br>
+
+        Eu te amo. ❤️
+
+    </p>
+
+</div>
+<div class="card">
+<h2>💌 Para Yasmin</h2>
+<p>Desde o momento em que você entrou na minha vida, tudo ganhou mais sentido. Você é minha música favorita, meu sorriso favorito e a pessoa que quero escolher todos os dias. ❤️</p>
+</div>
+</div>
+
+<script>
+const target = new Date("2026-02-07T00:00:00");
+
+function openSite(){
+ document.getElementById('music').play();
+ document.getElementById('cover').classList.add('spin');
+ document.getElementById('intro').style.display='none';
+ document.getElementById('site').style.display='block';
+}
+
+function toggleMusic(){
+ const m=document.getElementById('music');
+ const c=document.getElementById('cover');
+ if(m.paused){m.play();c.classList.add('spin');}
+ else{m.pause();c.classList.remove('spin');}
+}
+
+function updateCounter(){
+ const now=new Date();
+ let diff=target-now;
+ let txt='';
+ if(diff>0){
+   const d=Math.floor(diff/86400000);
+   const h=Math.floor(diff%86400000/3600000);
+   const m=Math.floor(diff%3600000/60000);
+   const s=Math.floor(diff%60000/1000);
+   txt='Faltam '+d+' dias, '+h+'h '+m+'m '+s+'s para 07/02/2026 ❤️';
+ }else{
+   diff=now-target;
+   const d=Math.floor(diff/86400000);
+   txt='Juntos há '+d+' dias ❤️';
+ }
+ document.getElementById('counter').innerHTML=txt;
+}
+setInterval(updateCounter,1000); updateCounter();
+</script>
+</body>
+</html>'''
+
+path = "/mnt/data/index.html"
+Path(path).write_text(html, encoding="utf-8")
+print(path)
